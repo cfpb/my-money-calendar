@@ -33,6 +33,7 @@
     "mobx": "^6.0.3",
     "mobx-react": "^7.0.4",
     "mobx-utils": "5.5.3",
+    "node-sass": "4.14.1",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "prop-types": "15.7.2",
     "react": "^17.0.0",

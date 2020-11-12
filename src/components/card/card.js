@@ -1,12 +1,14 @@
 import React from 'react'
 import clsx from 'clsx';
+import { useStyles } from '../../theme';
 
 export function CardGroup( { columns = 1, children } ) {
+  const classes = useStyles()
   const groupClass = clsx( 'o-card-group', columns > 1 && `o-card-group__column-${ columns }` );
 
   return (
     <div className={groupClass}>
-      <div className='o-card-group_cards'>{children}</div>
+      <div className={classes["o-card-group_cards"]}>{children}</div>
     </div>
   );
 }

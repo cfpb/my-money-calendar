@@ -9,31 +9,31 @@ import dbPromise from '../../lib/database';
 import { Categories } from '../models/categories';
 
 export default class CashFlowEvent {
-  originalEventID;
+  originalEventID= null;
 
-  id;
+  id = null;
 
   name = '';
 
-  date;
+  date = null;
 
-  category;
+  category = null;
 
   totalCents = 0;
 
   recurs = false;
 
-  recurrence;
+  recurrence = null;
 
-  errors;
+  errors = null;
 
   persisted = false;
 
-  updatedAt;
+  updatedAt = null;
 
-  createdAt;
+  createdAt = null;
 
-  recurrenceType;
+  recurrenceType = null;
 
   payday1 = 15;
 

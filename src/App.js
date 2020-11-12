@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
 import { ThemeProvider } from '@material-ui/core';
-import { theme } from './theme';
+import { theme, useStyles } from './theme';
 import AppRouter from './components/app-router/app-router';
 import { configure as configureMobX } from 'mobx';
 import { dayjs } from './lib/calendar-helpers';
 import { Categories } from './stores/models/categories';
 import { StoreProvider } from './stores';
-
 configureMobX({ enforceActions: 'observed' });
 
 // In development mode, expose global functions to seed and clear the local IDB database:
@@ -38,11 +37,14 @@ window.developer = {
 };
 
 function App() {
+  const classes = useStyles()
   return (
     <div className="App">
       <StoreProvider>
         <ThemeProvider theme={theme}>
-          <AppRouter></AppRouter>
+          <div className={classes['content_wrapper']}>
+           <AppRouter></AppRouter>
+          </div>
         </ThemeProvider>
       </StoreProvider>
     </div>

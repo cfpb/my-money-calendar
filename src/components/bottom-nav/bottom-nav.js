@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useStore } from '../../stores';
 
 import { add, calendar, idea, menu } from '../../lib/icons';
+import '../../css/components/bottom-nav.less'
 
 const NavItem = ( { href, icon, label, badge, disabled = false, canSpotlight, spotlight, ...params } ) => {
   const classes = clsx( 'bottom-nav__link', disabled && 'disabled' );

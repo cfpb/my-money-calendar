@@ -5,8 +5,12 @@ import Hero from '../../components/hero/hero';
 
 import { arrowRight } from '../../lib/icons';
 import hero from '../../img/Hero_2.png';
+import { useStyles } from '../../theme';
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 export default function Start() {
+  const classes = useStyles()
   useScrollToTop();
 
   return (
@@ -18,13 +22,14 @@ export default function Start() {
         alt='myMoney Calendar'
       />
       <br />
-      <div className='m-hero_subhead'>
+      <div className={classes['m-hero_subhead']}>
         <p>Enter your income, expenses, and cash-on-hand to build your calendar.</p>
         <p>It's okay to estimate.</p>
-
-        <ButtonLink icon={arrowRight} iconSide='right' to='/money-on-hand/sources'>
-          Get Started
-        </ButtonLink>
+        <Link class={classes['no-underline']} to="/money-on-hand/sources">
+          <Button variant="contained" color="secondary" size="large" disableElevation>
+            Get Started
+          </Button>
+        </Link>
       </div>
     </>
   );

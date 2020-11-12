@@ -3,7 +3,7 @@ import { toDayJS, dayjs } from '../../lib/calendar-helpers';
 import logger from '../../lib/logger';
 
 export default class Day {
-  date;
+  date = null;
 
   snapBalance = 0;
 
