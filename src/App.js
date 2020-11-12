@@ -7,6 +7,7 @@ import { configure as configureMobX } from 'mobx';
 import { dayjs } from './lib/calendar-helpers';
 import { Categories } from './stores/models/categories';
 import { StoreProvider } from './stores';
+import './css/main.less'
 configureMobX({ enforceActions: 'observed' });
 
 // In development mode, expose global functions to seed and clear the local IDB database:

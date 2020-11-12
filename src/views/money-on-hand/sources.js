@@ -34,7 +34,7 @@ function Sources() {
 
       <main className={bem( 'main' )}>
         <figure className={classes['wizard-step-image']}>
-          <img src={moneyOnHand} alt='placeholder' className={classes['wizard-step-image-asset']} />
+          <SvgImage src={moneyOnHand} alt='placeholder' className={classes['wizard-step-image-asset']} />
         </figure>
 
         <Formik
