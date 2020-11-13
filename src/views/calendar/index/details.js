@@ -1,5 +1,5 @@
 import React from 'react'
-import { arrowLeft, arrowRight, delete as deleteIcon, hamburger as dragHandle, pencil } from '../../../lib/icons';
+import { arrowLeft, arrowRight, deleteIcon, hamburger as dragHandle, pencil } from '../../../lib/icons';
 import { Link, useHistory } from 'react-router-dom';
 import { useKeyPressEvent, useLockBodyScroll, useToggle } from 'react-use';
 import { formatCurrency } from '../../../lib/currency-helpers';
