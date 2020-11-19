@@ -6,10 +6,11 @@ import { useStore } from '../../stores';
 import { useBEM } from '../../lib/hooks';
 import { useScrollToTop } from '../../components/scroll-to-top/scroll-to-top';
 import { formatCurrency } from '../../lib/currency-helpers';
-import { BackButton, NextButton } from '../../components/button/button';
 
 import categoryIcons from '../../lib/category-icons';
 import SvgImage from '../../components/svg-image/svg-image';
+import { Button } from '@material-ui/core';
+
 
 function Summary() {
   const { eventStore, wizardStore } = useStore();
@@ -77,8 +78,8 @@ function Summary() {
         </p>
 
         <div className={bem( 'buttons' )}>
-          <BackButton onClick={history.goBack}>Back</BackButton>
-          <NextButton onClick={saveAndRedirect}>Go to Calendar</NextButton>
+          <Button onClick={history.goBack} variant="contained" color="secondary">Back</Button>
+          <Button onClick={saveAndRedirect} variant="contained" color="secondary">Go to Calendar</Button>
         </div>
       </main>
     </>

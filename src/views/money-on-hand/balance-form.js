@@ -7,11 +7,10 @@ import * as yup from 'yup';
 import { useStore } from '../../stores';
 import { useBEM } from '../../lib/hooks';
 import { CurrencyField } from '../../components/forms/forms';
-import { BackButton, NextButton } from '../../components/button/button';
 import { useScrollToTop } from '../../components/scroll-to-top/scroll-to-top';
-import SvgImage from '../../components/svg-image/svg-image';
 
 import categoryIcons from '../../lib/category-icons';
+import { Button } from '@material-ui/core';
 
 function BalanceForm() {
   const { wizardStore } = useStore();
@@ -84,8 +83,8 @@ function BalanceForm() {
             />
 
             <div className={bem( 'buttons' )}>
-              <BackButton type='button' onClick={goBack}>Back</BackButton>
-              <NextButton type='submit'>Next</NextButton>
+              <Button type='button' onClick={goBack} variant="contained" color="secondary">Back</Button>
+              <Button type='submit' variant="contained" color="secondary">Next</Button>
             </div>
           </form>
           }

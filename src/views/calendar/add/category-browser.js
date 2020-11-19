@@ -6,8 +6,8 @@ import { useStore } from '../../../stores';
 import { Categories } from '../../../stores/models/categories';
 import { useLogger } from '../../../lib/logger';
 import { useScrollToTop } from '../../../components/scroll-to-top/scroll-to-top';
-import { BackButton } from '../../../components/button/button';
 import { SvgSpan } from '../../../components/svg-image/svg-image';
+import { Button } from '@material-ui/core';
 
 function CategoryBrowser( { match } ) {
   const { eventStore, uiStore } = useStore();
@@ -36,7 +36,7 @@ function CategoryBrowser( { match } ) {
 
   return (
     <section className='category-browser'>
-      <BackButton variant='secondary' onClick={() => history.replace( backPath )}>Back</BackButton>
+      <Button variant="contained" className="back-button" onClick={() => history.replace( backPath )}>Back</Button>
 
       <nav className='category-browser__tab-nav'>
         <ul className='category-browser__tab-items'>

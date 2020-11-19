@@ -1,9 +1,7 @@
 import React from 'react'
 import { useScrollToTop } from '../../components/scroll-to-top/scroll-to-top';
-import { ButtonLink } from '../../components/button/button';
 import Hero from '../../components/hero/hero';
 
-import { arrowRight } from '../../lib/icons';
 import hero from '../../img/Hero_2.png';
 import { useStyles } from '../../theme';
 import { Button } from '@material-ui/core';

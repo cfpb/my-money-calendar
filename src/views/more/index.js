@@ -2,14 +2,16 @@ import React from 'react'
 import { useCallback } from 'react';
 import { useToggle } from 'react-use';
 import { observer } from 'mobx-react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ModalDialog from '../../components/modal-dialog/modal-dialog';
 import { useStore } from '../../stores';
 import { useBEM } from '../../lib/hooks';
-import { Button, ButtonLink } from '../../components/button/button';
 import { useScrollToTop } from '../../components/scroll-to-top/scroll-to-top';
+import { Button } from '@material-ui/core';
+import { useStyles } from '../../theme';
 
 function More() {
+  const classes = useStyles()
   const { eventStore, uiStore } = useStore();
   const bem = useBEM( 'more' );
   const history = useHistory();
@@ -33,19 +35,23 @@ function More() {
       <main className={bem( 'main' )}>
         <ul className={bem( 'actions' )}>
           <li className={bem( 'actions-item' )}>
-            <ButtonLink fullWidth variant='primary' to='/more/export/strategies'>
+          <Link to='/more/export/strategies'>
+            <Button variant="contained" color="secondary" size="large">
               Save Strategies
-            </ButtonLink>
-          </li>
-          <li className={bem( 'actions-item' )}>
-            <ButtonLink fullWidth variant='primary' to='/more/export/calendar'>
-              Save Calendar
-            </ButtonLink>
-          </li>
-          <li className={bem( 'actions-item' )}>
-            <Button fullWidth variant='warning' onClick={() => toggleClearDataModal( true )}>
-              Clear My Data
             </Button>
+          </Link>
+          </li>
+          <li className={bem( 'actions-item' )}>
+            <Link to='/more/export/calendar'>
+              <Button variant="contained" color="secondary" size="large">
+                Save Calendar
+              </Button>
+            </Link>
+          </li>
+          <li className={bem( 'actions-item' )}>
+              <Button variant="contained" className={'warn-button'} size="large" onClick={() => toggleClearDataModal( true )}>
+                Clear My Data
+              </Button>
           </li>
         </ul>
       </main>

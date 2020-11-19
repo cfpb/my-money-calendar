@@ -1,17 +1,18 @@
 import React from 'react'
-import { arrowLeft, pencil } from '../../../lib/icons';
-import { Button, ButtonLink } from '../../../components/button/button';
+import { pencil } from '../../../lib/icons';
+import { ButtonIcon } from '../../../components/button/button';
 import { Card, CardGroup } from '../../../components/card/card';
 import { useCallback, useEffect, useState } from 'react';
 import { dayjs } from '../../../lib/calendar-helpers';
 import { formatCurrency } from '../../../lib/currency-helpers';
 import { narrativeCopy } from '../../../lib/narrative-copy';
 import { observer } from 'mobx-react';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { useStore } from '../../../stores';
 import { useScrollToTop } from '../../../components/scroll-to-top/scroll-to-top';
 import NarrativeModal from '../../../components/narrative-notification/narrative-notification';
 import Strategies from '../index';
+import { Button } from '@material-ui/core';
 
 const FixItButton = ( { result } ) => {
   const href = result.event ? `/calendar/add/${ result.event.id }/edit` : result.link.href;
@@ -27,8 +28,8 @@ const FixItButton = ( { result } ) => {
   );
 
   return (
-    <Button icon={pencil} onClick={buttonAction} variant='strategy'>
-      {label}
+    <Button onClick={buttonAction} variant='contained' color="primary">
+      {ButtonIcon({icon: pencil})} {label}
     </Button>
   );
 };
@@ -157,9 +158,9 @@ function FixItStrategies() {
       </div>
 
       <footer className='strategies-footer'>
-        <ButtonLink iconSide='left' icon={arrowLeft} to='/calendar'>
-          Back to Calendar
-        </ButtonLink>
+        <Link to='/calendar'>
+          <Button variant="contained" className="back-button">Back to Calendar</Button>
+        </Link>
       </footer>
     </section>
   );

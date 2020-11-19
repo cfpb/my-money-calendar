@@ -1,6 +1,5 @@
 import React from 'react'
 import * as yup from 'yup';
-import Button, { BackButton } from '../../../components/button/button';
 import { Checkbox, CurrencyField, DateField, RadioButton, SelectField, TextField } from '../../../components/forms/forms';
 import { dayjs, numberWithOrdinal, recurrenceRules } from '../../../lib/calendar-helpers';
 import { Redirect, useHistory, useParams, withRouter } from 'react-router-dom';
@@ -18,6 +17,7 @@ import CashFlowEvent from '../../../stores/models/cash-flow-event';
 import Logger from '../../../lib/logger';
 import ModalDialog from '../../../components/modal-dialog/modal-dialog';
 import NarrativeModal from '../../../components/narrative-notification/narrative-notification';
+import { Button } from '@material-ui/core';
 
 
 function Form() {
@@ -138,9 +138,9 @@ function Form() {
           copy={narrativeCopy.step4}
         />
       }
-      <BackButton variant='secondary' onClick={() => history.goBack()}>
+      <Button variant='contained' className="back-button" onClick={() => history.goBack()}>
         Back
-      </BackButton>
+      </Button>
 
       <h2 className='add-event__title'>{category.name}</h2>
       {category.name === 'Job' ?
@@ -301,9 +301,12 @@ function Form() {
           />
 
           <Button
-            fullWidth disabled={!formik.dirty && !formik.isValid}
+            disabled={!formik.dirty && !formik.isValid}
             type='submit'
-            tabIndex='0'>
+            tabIndex='0'
+            color="secondary"
+            variant="contained"
+            >
               Save
           </Button>
         </form>

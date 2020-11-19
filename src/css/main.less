@@ -11,10 +11,14 @@
 
 
 
-@text: 'Arial';
-@green: 'green';
+@text: #000000;
+@green: #20aa3f;
 @gold: 'gold';
-@white: 'white';
+@white: #FFFFFF;
+@warn: #d14124;
+@warn-hover: #b63014;
+@back: #5a5d61;
+@back-hover: #43484e;
 
 .app {
   margin-bottom: 3rem;
@@ -34,4 +38,43 @@
   @media screen and (min-width: 600px) {
     max-height: 240px;
   }
+}
+
+.cf-icon-svg {
+  height: 1.1875em;
+  vertical-align: text-top;
+  fill: currentColor;
+  max-width: 1em;
+}    
+
+a {
+  border-width: 0;
+  border-style: dotted;
+  text-decoration: none
+}
+
+.warn-button {
+  background-color: @warn !important;
+  color: @white !important;
+
+  &:hover {
+    background-color: @warn-hover !important;
+  }
+}
+
+.back-button {
+  background-color: @back !important;
+  color: @white !important;
+
+  &:hover {
+    background-color: @back-hover !important;
+  }
+}
+
+.more__actions-item {
+  padding-bottom: .5rem;
+}
+
+ul {
+  list-style: none;
 }

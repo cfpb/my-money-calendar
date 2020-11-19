@@ -3,7 +3,7 @@ import { createMuiTheme, createStyles, makeStyles } from "@material-ui/core";
 // Variables
 const primaryColor = '#20aa3f'
 const secondaryColor = '#0072ce'
-const warnColor = '#FF0000'
+const warnColor = '#d14124'
 
 // Theme Objeect
 const customTheme = {
@@ -15,6 +15,9 @@ const customTheme = {
             main: secondaryColor
         },
         warning: {
+            main: warnColor
+        },
+        error: {
             main: warnColor
         },
     },
@@ -39,8 +42,7 @@ const stylesObject = {
       },
       'content_wrapper': {
         'max-width': '1200px',
-        'padding-right': '15px',
-        'padding-left': '15px',
+        'padding': '15px',
         'margin': '0 auto',
         'clear': 'both'
       },
@@ -109,8 +111,7 @@ const stylesObject = {
       },
       'flex-end': {
         'justify-content': 'flex-end'
-      }
-
+      },
 }
 
 export const useStyles = makeStyles(() =>

@@ -1,10 +1,10 @@
 import React from 'react'
 import { observer } from 'mobx-react';
-import { useParams } from 'react-router-dom';
-import { ButtonLink } from '../../components/button/button';
+import { Link, useParams } from 'react-router-dom';
 import { useScrollToTop } from '../../components/scroll-to-top/scroll-to-top';
 import { useBEM } from '../../lib/hooks';
 import { useStore } from '../../stores';
+import { Button } from '@material-ui/core';
 
 function Export() {
   const { eventStore, strategiesStore } = useStore();
@@ -19,10 +19,11 @@ function Export() {
         <h1 className={bem( 'app-title' )}>myMoney Calendar</h1>
         <h2 className={bem( 'section-title' )}>Save {dataType}</h2>
       </header>
-
-      <ButtonLink to='/more' variant='secondary'>
-        Back
-      </ButtonLink>
+      <Link to="/more">
+        <Button className="back-button" variant="contained">
+          Back
+        </Button>
+      </Link>
     </section>
   );
 }
