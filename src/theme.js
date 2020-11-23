@@ -74,10 +74,6 @@ const stylesObject = {
       'o-footer': {
         'padding-bottom': '5.125rem !important'
       },
-      'o-card-group_cards': {
-        'margin-bottom': '1.8rem'
-      },
-      
       'hero-image': {
         'max-height': '46vw',
         'max-height': '240px'

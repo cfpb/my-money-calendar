@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 import { useStore } from '../../stores';
 import { useScrollToTop } from '../../components/scroll-to-top/scroll-to-top';
 import { Card, CardGroup } from '../../components/card/card';
+import { Button } from '@material-ui/core';
 
 const StrategyCards = ( { results } ) => <main className='strategy-cards'>
   <CardGroup columns={2}>
@@ -11,9 +12,9 @@ const StrategyCards = ( { results } ) => <main className='strategy-cards'>
 
       {Boolean( result.link ) &&
             <div className='m-card_footer'>
-              <a href={result.link.href} className='a-btn a-btn__full-on-xs' target='_blank'>
+              <Button variant="contained" color="secondary" href={result.link.href} className='a-btn a-btn__full-on-xs' target='_blank'>
                 {result.link.text}
-              </a>
+              </Button>
             </div>
       }
     </Card>
