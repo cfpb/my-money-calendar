@@ -9,7 +9,6 @@ import { add, calendar, idea, menu } from '../../lib/icons';
 import '../../css/components/bottom-nav.less'
 
 const NavItem = ( { href, icon, label, badge, disabled = false, canSpotlight, spotlight, ...params } ) => {
-  console.log(idea)
   const classes = clsx( 'bottom-nav__link', disabled && 'disabled' );
   const iconClasses = clsx( 'bottom-nav__link-icon' );
   const labelClasses = clsx( 'bottom-nav__link-label' );

@@ -1,6 +1,6 @@
 import React from 'react'
 import * as yup from 'yup';
-import { Checkbox, CurrencyField, DateField, RadioButton, SelectField, TextField } from '../../../components/forms/forms';
+import { CustomCheckBox, CurrencyField, DateField, RadioButton, SelectField, CustomTextField } from '../../../components/forms/forms';
 import { dayjs, numberWithOrdinal, recurrenceRules } from '../../../lib/calendar-helpers';
 import { Redirect, useHistory, useParams, withRouter } from 'react-router-dom';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -146,8 +146,7 @@ function Form() {
       {category.name === 'Job' ?
         <p className='add-event__intro'> Enter your paycheck information.</p> :
         <p className='add-event__intro'>
-          Enter the details of your {handleCatName( category.name )}
-          {eventType}.
+          Enter the details of your {handleCatName( category.name )} {eventType}.
         </p>
       }
       {Boolean( category.description ) &&
@@ -165,7 +164,7 @@ function Form() {
             .positive( 'Total must be greater than $0.00' )
             .required( 'Total is required' ),
           dateTime: yup.date( 'Must be a valid date' ).required( 'Date is required' ),
-          recurrenceType: yup.string().when( 'recurs', {
+          recurrenceType: yup.string().nullable().when( 'recurs', {
             is: true,
             then: yup.string().required( 'Frequency is required for recurring transactions' ),
             otherwise: yup.string()
@@ -208,7 +207,8 @@ function Form() {
         }}
       >
         { formik => <form onSubmit={formik.handleSubmit}>
-          <TextField
+          {console.log(formik.errors)}
+          <CustomTextField
             name='name'
             id='name'
             label='Description'
@@ -221,7 +221,7 @@ function Form() {
             tabIndex='0'
             placeholder={`For example: ${ category.name }`}
           />
-          <Checkbox
+          <CustomCheckBox
             id='recurs'
             name='recurs'
             label='Recurring?'
@@ -241,7 +241,7 @@ function Form() {
                 onBlur={formik.handleBlur}
                 errors={formik.errors.recurrenceType}
                 touched={formik.touched.recurrenceType}
-                required={formik.values.recurs}
+                // required={formik.values.recurs}
                 tabIndex='0'
               />
           }

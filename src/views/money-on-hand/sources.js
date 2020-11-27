@@ -63,7 +63,7 @@ function Sources() {
                   {Object.entries( wizardStore.fundingSourceOptions ).map( ( [ key, { name } ], idx ) => 
                    <FormControlLabel
                     control={
-                    <Checkbox 
+                    <CustomCheckBox 
                       disabled={formik.values.noFunds}
                       key={`funding-source-opt-${ idx }`}
                       name='fundingSources'
@@ -88,7 +88,7 @@ function Sources() {
             </div>
             <div className={classes['wizard-field-last']}>
               <FormControlLabel
-                control={<Checkbox
+                control={<CustomCheckBox
                   id='funding-source-none'
                   key='funding-source-none'
                   name='noFunds'

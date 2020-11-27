@@ -4,8 +4,9 @@ import { useCallback } from 'react';
 import { formatCurrency, toCents } from '../../lib/currency-helpers';
 
 import { closeRound } from '../../lib/icons';
+import { Checkbox, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 
-export const Checkbox = ( { id, name, onChange, checked, label, value = '1', castToBoolean = true, largeTarget = false, ...props } ) => {
+export const CustomCheckBox = ( { id, name, onChange, checked, label, value = '1', castToBoolean = true, largeTarget = false, ...props } ) => {
   const changeHandler = useCallback(
     evt => {
       if ( castToBoolean ) evt.target.value = evt.target.checked;
@@ -20,7 +21,7 @@ export const Checkbox = ( { id, name, onChange, checked, label, value = '1', cas
 
   return (
     <div className={classes}>
-      <input
+      <Checkbox
         className='a-checkbox'
         type='checkbox'
         name={name}
@@ -37,7 +38,7 @@ export const Checkbox = ( { id, name, onChange, checked, label, value = '1', cas
   );
 };
 
-export const TextField = ( {
+export const CustomTextField = ( {
   id,
   name,
   type = 'text',
@@ -54,30 +55,27 @@ export const TextField = ( {
   const inputClasses = clsx( 'a-text-input', errors && touched && 'a-text-input__error' );
 
   return (
-    <div className={fieldClasses}>
-      <label className='a-label a-label__heading' htmlFor={id}>
-        {label} {!required && <small className='a-label_helper'>(optional)</small>}
-      </label>
-      <input
-        type={type}
-        className={inputClasses}
-        id={id}
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-        {...props}
-      />
-      {errors && touched &&
-        <div className='a-form-alert a-form-alert__error' role='alert'>
-          <span dangerouslySetInnerHTML={{ __html: closeRound }} className='error-icon' />
-          <span className='a-form-alert_text'>{errors}</span>
-        </div>
-      }
-    </div>
-  );
+    <TextField
+      label={required ? label : `${label} (optional)`}
+      placeholder={label}
+      type={type}
+      id={id}
+      value={value}
+      onChange={onChange}
+      onBlur={onBlur}
+      {...props}
+      InputLabelProps={{
+        shrink: true
+      }}
+      className={inputClasses}
+      helperText={touched && errors ? errors : ''}
+      error={touched && errors}
+      fullWidth
+    />
+  )
 };
 
-export const DateField = ( { onChange, value, ...props } ) => <TextField type='date' onChange={onChange} value={value} {...props} />;
+export const DateField = ( { onChange, value, ...props } ) => <CustomTextField type='date' onChange={onChange} value={value} {...props} />;
 export const CurrencyField = ( { id, name, onChange, onBlur, label, value, ...props } ) => {
   const handleChange = useCallback(
     evt => {
@@ -88,7 +86,7 @@ export const CurrencyField = ( { id, name, onChange, onBlur, label, value, ...pr
   );
 
   return (
-    <TextField
+    <CustomTextField
       id={id}
       name={name}
       onChange={handleChange}
@@ -149,35 +147,57 @@ export const SelectField = ( {
   touched,
   ...props
 } ) => {
+  if(!value){
+    value = ''
+  }
   const fieldClasses = clsx( 'm-form-field', 'm-form-field__select', errors && touched && 'm-form-field__error' );
   const inputClasses = clsx( 'a-select', errors && touched && 'a-select__error' );
 
   const opts = [
-    <option value={null} key='empty'>
+    <MenuItem value={''} key='empty'>
       {placeholder}
-    </option>,
-    ...options.map( ( { label: optLabel, value: optVal } ) => <option value={optVal} key={optVal}>
+    </MenuItem>,
+    ...options.map( ( { label: optLabel, value: optVal } ) => <MenuItem value={optVal} key={optVal}>
       {optLabel}
-    </option>
+    </MenuItem>
     )
   ];
 
   return (
-    <div className={fieldClasses}>
-      <label className='a-label a-label__heading' htmlFor={id}>
-        {label}
-      </label>
-      <div className={inputClasses}>
-        <select id={id} name={name} value={value} onChange={onChange} onBlur={onBlur} {...props}>
-          {opts}
-        </select>
-      </div>
-      {errors && touched &&
-        <div className='a-form-alert a-form-alert__error' role='alert'>
-          <span dangerouslySetInnerHTML={{ __html: closeRound }} className='error-icon' />
-          <span className='a-form-alert_text'>{errors}</span>
-        </div>
-      }
-    </div>
+    <FormControl error={touched && errors}>
+      <InputLabel id={id + '-label'} className="select-label">{label}</InputLabel>
+      <Select
+        labelId={id + 'label'}
+        id={id}
+        name={name} 
+        value={value} 
+        onChange={onChange} 
+        onBlur={onBlur} 
+        {...props}
+      >
+        {opts}
+      </Select>
+      <FormHelperText>{touched && errors ? errors : ''}</FormHelperText>
+      </FormControl>
   );
+
+
+  // return (
+  //   <div className={fieldClasses}>
+  //     <label className='a-label a-label__heading' htmlFor={id}>
+  //       {label}
+  //     </label>
+  //     <div className={inputClasses}>
+  //       <select id={id} name={name} value={value} onChange={onChange} onBlur={onBlur} {...props}>
+  //         {opts}
+  //       </select>
+  //     </div>
+  //     {errors && touched &&
+  //       <div className='a-form-alert a-form-alert__error' role='alert'>
+  //         <span dangerouslySetInnerHTML={{ __html: closeRound }} className='error-icon' />
+  //         <span className='a-form-alert_text'>{errors}</span>
+  //       </div>
+  //     }
+  //   </div>
+  // );
 };

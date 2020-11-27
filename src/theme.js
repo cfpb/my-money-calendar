@@ -34,6 +34,15 @@ const customTheme = {
         }
     },
     spacing: 6,
+    overrides: {
+      MuiInputLabel: { 
+        root: {
+          'font-size': '26px',
+          'font-weight': '600',
+          'line-height': '.25'
+        },
+      },
+    }
 }
 
 const stylesObject = {
