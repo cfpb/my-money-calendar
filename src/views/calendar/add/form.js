@@ -241,7 +241,6 @@ function Form() {
                 onBlur={formik.handleBlur}
                 errors={formik.errors.recurrenceType}
                 touched={formik.touched.recurrenceType}
-                // required={formik.values.recurs}
                 tabIndex='0'
               />
           }
