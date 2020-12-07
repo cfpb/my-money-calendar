@@ -1,40 +1,26 @@
 #### CFPB Open Source Project Template Instructions
-
-1. Create a new project.
-2. [Copy these files into the new project](#installation)
-3. Update the README, replacing the contents below as prescribed.
 4. Add any libraries, assets, or hard dependencies whose source code will be included
    in the project's repository to the _Exceptions_ section in the [TERMS](TERMS.md).
   - If no exceptions are needed, remove that section from TERMS.
-5. If working with an existing code base, answer the questions on the [open source checklist](opensource-checklist.md)
-6. Delete these instructions and everything up to the _Project Title_ from the README.
-7. Write some great software and tell people about it.
-
-> Keep the README fresh! It's the first thing people see and will make the initial impression.
-
-## Installation
-
-To install all of the template files, run the following script from the root of your project's directory:
-
-```
-bash -c "$(curl -s https://raw.githubusercontent.com/CFPB/development/master/open-source-template.sh)"
-```
 
 ----
 
-# Project Title
+# My Money Calendar
 
-**Description**:  Put a meaningful, short, plain-language description of what
-this project is trying to accomplish and why it matters.
-Describe the problem(s) this project solves.
-Describe how this software can improve the lives of its audience.
+**Description**: 
+A tool to help users track and manage their finances. Allows users to enter different types of earnings and expenses
+into a calendar format and gives them strategies on how to handle the earnings and expenses.
 
 Other things to include:
 
-  - **Technology stack**: Indicate the technological nature of the software, including primary programming language(s) and whether the software is intended as standalone or as a module in a framework or other ecosystem.
-  - **Status**:  Alpha, Beta, 1.1, etc. It's OK to write a sentence, too. The goal is to let interested people know where this project is at. This is also a good place to link to the [CHANGELOG](CHANGELOG.md).
+  - **Technology stack**:
+    - This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+    - This project uses the [Material-UI](https://material-ui.com/)
+    - This project stores its data in the browser using [idb](https://github.com/jakearchibald/idb)
+  - **Status**: Beta
+    - The project is fully functioning but has updates coming to improve the code quality
   - **Links to production or demo instances**
-  - Describe what sets this apart from related-projects. Linking to another doc or page is OK if this can't be expressed in a sentence or two.
+    - https://affectionate-nightingale-cbacac.netlify.app/mmt-my-money-calendar/money-on-hand
 
 
 **Screenshot**: If the software has visual components, place a screenshot after the description; e.g.,
@@ -44,33 +30,56 @@ Other things to include:
 
 ## Dependencies
 
-Describe any dependencies that must be installed for this software to work.
-This includes programming languages, databases or other storage mechanisms, build tools, frameworks, and so forth.
-If specific versions of other software are required, or known not to work, call that out.
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://classic.yarnpkg.com/en/)
 
 ## Installation
-
-Detailed instructions on how to install, configure, and get the project running.
-This should be frequently tested to ensure reliability. Alternatively, link to
-a separate [INSTALL](INSTALL.md) document.
+`yarn install` will install all necessary packages required to run the app
 
 ## Configuration
 
 If the software is configurable, describe it in detail, either here or in other documentation to which you link.
 
 ## Usage
+In the project directory, you can run:
 
-Show users how to use the software.
-Be specific.
-Use appropriate formatting when showing code snippets.
+yarn start
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
+
+The page will reload if you make edits.
+You will also see any lint errors in the console.
+
+yarn test
+Launches the test runner in the interactive watch mode.
+See the section about running tests for more information.
+
+yarn run build
+Builds the app for production to the build folder.
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.
+Your app is ready to be deployed!
+
+See the section about deployment for more information.
+
+yarn run eject 
+Note: This project currently has been ejected but there are plans to revert the ejection once the .less is converted to a format that works with create-react-app
+Note: this is a one-way operation. Once you eject, you can’t go back!
+
+If you aren’t satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except eject will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use eject. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## How to test the software
 
-If the software includes automated tests, detail how to run those tests.
+yarn test
+Launches the test runner in the interactive watch mode.
+See the section about running tests for more information.
 
 ## Known issues
-
-Document any known significant shortcomings with the software.
 
 ## Getting help
 
@@ -95,12 +104,3 @@ General instructions on _how_ to contribute should be stated with a link to [CON
 1. [TERMS](TERMS.md)
 2. [LICENSE](LICENSE)
 3. [CFPB Source Code Policy](https://github.com/cfpb/source-code-policy/)
-
-
-----
-
-## Credits and references
-
-1. Projects that inspired you
-2. Related projects
-3. Books, papers, talks, or other sources that have meaningful impact or influence on this project
