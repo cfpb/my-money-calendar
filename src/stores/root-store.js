@@ -12,8 +12,21 @@ export default class RootStore {
     makeObservable(this, {
       loading: observable,
       setLoading: action,
-      setIdle: action
+      setIdle: action,
+      reset: action
     })
+    this.setup()
+  }
+
+  setLoading() {
+    this.loading = true;
+  }
+
+  setIdle() {
+    this.loading = false;
+  }
+
+  setup() {
     this.logger = logger.addGroup('rootStore');
     this.uiStore = new UIStore(this);
     this.eventStore = new CashFlowStore(this);
@@ -23,11 +36,7 @@ export default class RootStore {
     this.logger.debug('Initialize RootStore: %O', this);
   }
 
-  setLoading() {
-    this.loading = true;
-  }
-
-  setIdle() {
-    this.loading = false;
+  reset() {
+    this.setup()
   }
 }
