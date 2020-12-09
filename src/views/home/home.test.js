@@ -1,24 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import Home from './index';
-import { StoreProvider } from '../../stores';
-import routeData from 'react-router';
+import { renderWithRouter, testSteup } from '../../test-helper';
 
-const mockLocation = {
-    pathname: '/welcome',
-    hash: '',
-    search: '',
-    state: ''
-  }
-
-beforeAll(() => {
-    jest.spyOn(routeData, 'useLocation').mockReturnValue(mockLocation)
-
+describe('Home',() => {
+  beforeEach(async () => {
+    await testSteup()
+  })
+  
+  test('renders loading text', () => {
+    window.scrollTo = function(){ }
+    const { getByText } = renderWithRouter(<Home />);
+    const loadingElement = getByText(/Loading.../i);
+    expect(loadingElement).toBeInTheDocument();
+  });
 })
 
-test('renders loading text', () => {
-  window.scrollTo = function(){ }
-  const { getByText } = render(<StoreProvider><Home /></StoreProvider>);
-  const loadingElement = getByText(/Loading.../i);
-  expect(loadingElement).toBeInTheDocument();
-});

@@ -5,6 +5,7 @@ import { StoreProvider, useStore } from './stores';
 import { createMemoryHistory } from 'history';
 import routeData from 'react-router';
 import UIStore from './stores/ui-store';
+import RootStore from './stores/root-store';
 
 const uiStore = new UIStore()
 
@@ -45,6 +46,9 @@ export async function testSteup(){
 
 
 export const renderWithRouter = (component, store) => {
+  if(!store) {
+    store = new RootStore()
+  }
     const history = createMemoryHistory({
       initialEntries: ["/part1/idValue1/part2/idValue2/part3"],
     });
