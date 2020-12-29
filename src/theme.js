@@ -35,13 +35,6 @@ const customTheme = {
     },
     spacing: 6,
     overrides: {
-      MuiInputLabel: { 
-        root: {
-          'font-size': '26px',
-          'font-weight': '600',
-          'line-height': '.25'
-        },
-      },
     }
 }
 
@@ -57,7 +50,8 @@ const stylesObject = {
       },
       'm-hero': {
         'background-color': '#f7f8f9',
-        'display': 'block'
+        'display': 'block',
+        'max-width': '100%'
       },
       'm-hero_heading': {
         'margin-bottom': '.44117647em',
@@ -69,7 +63,8 @@ const stylesObject = {
       },
       'm-hero_text': {
         'display': 'block',
-        'margin': 'auto'
+        'margin': 'auto',
+        'flex': '1'
       },
       'm-hero_wrapper': {
         'padding': '.9375em 2.8125em',
@@ -85,10 +80,13 @@ const stylesObject = {
       },
       'hero-image': {
         'max-height': '46vw',
-        'max-height': '240px'
+        'max-height': '240px',
         // @media screen and (min-width: 600px) {
         //   max-height: 240px;
         // }
+      },
+      'm-hero_image-wrapper': {
+        'flex': '1'
       },
       'no-underline': {
           'text-decoration': 'none'
