@@ -5,8 +5,15 @@ import { useScrollToTop } from '../../components/scroll-to-top/scroll-to-top';
 import { Card, CardGroup } from '../../components/card/card';
 import { Button } from '@material-ui/core';
 
+let columns
+if(window.screen.width > 600){
+  columns = 2
+} else {
+  columns = 1
+}
+
 const StrategyCards = ( { results } ) => <main className='strategy-cards'>
-  <CardGroup columns={2}>
+  <CardGroup columns={columns}>
     {results.map( ( result, index ) => <Card title={result.title} icon={result.icon1} key={`strategy-${ index }`}>
       <p>{result.body}</p>
 
